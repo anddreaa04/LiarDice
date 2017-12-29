@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Shake_V4</string>
+    <string name="number"> </string>
+    <string name="shake">Shake Me!</string>
+    <string name="btn_next">Siguiente ronda</string>
+    <string name="btn_finish">Fin</string>
+</resources>
