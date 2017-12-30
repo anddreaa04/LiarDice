@@ -18,6 +18,7 @@ public class Comparador extends AppCompatActivity {
 
     TextView textGenerateNumber_a;
     TextView textGenerateNumber_b;
+    TextView text_ganador;
 
     //Valores del resultado de la tirada
     int a;
@@ -33,6 +34,7 @@ public class Comparador extends AppCompatActivity {
 
         textGenerateNumber_a = (TextView) findViewById(R.id.txt_a);
         textGenerateNumber_b = (TextView) findViewById(R.id.txt_b);
+        text_ganador = (TextView) findViewById(R.id.txt_ganador);
         Button btn_compara=(Button) findViewById(R.id.btn_comparar);
         btn_compara.setVisibility(View.VISIBLE);
 
@@ -45,13 +47,19 @@ public class Comparador extends AppCompatActivity {
 
 
         if(a<b){
-            Toast.makeText(this, "Gana el jugador B", Toast.LENGTH_SHORT).show();
+            String gana_b= "Gana el jugador B";
+            text_ganador.setText(gana_b);
+            //Toast.makeText(this, "Gana el jugador B", Toast.LENGTH_SHORT).show();
         }
         else if (a>b){
-            Toast.makeText(this, "Gana el jugador A", Toast.LENGTH_SHORT).show();
+            String gana_a= "Gana el jugador A";
+            text_ganador.setText(gana_a);
+            //Toast.makeText(this, "Gana el jugador A", Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
+            String empate= "Empate";
+            text_ganador.setText(empate);
+            //Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
         }
     }
 
