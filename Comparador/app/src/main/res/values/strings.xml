@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Comparador</string>
+    <string name="btn_a">A</string>
+    <string name="btn_b">B</string>
+    <string name="txt_a" />
+    <string name="txt_b" />
+    <string name="txt_ganador" />
+    <string name="compara">Compara</string>
+</resources>
