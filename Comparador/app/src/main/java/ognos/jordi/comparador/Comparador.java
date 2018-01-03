@@ -1,11 +1,12 @@
 package ognos.jordi.comparador;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
 
@@ -23,6 +24,7 @@ public class Comparador extends AppCompatActivity {
     //Valores del resultado de la tirada
     int a;
     int b;
+
 
 
 
@@ -65,15 +67,32 @@ public class Comparador extends AppCompatActivity {
 
     public void num_a (View view){
 
-        a =myRandom.nextInt(limite)+1;
+        //a =myRandom.nextInt(limite)+1;
+        int n=6;
+        a = (int) (Math.random() * n) + 1;
         textGenerateNumber_a.setText(String.valueOf(a));
         Button btn_a=(Button) findViewById(R.id.btn_a);
         btn_a.setVisibility(View.INVISIBLE);
+        contador_vibraciones(a);
 
     }
+
+    private void contador_vibraciones(int n) {
+        int i=0;
+        while (i<n)
+        {
+             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            // Vibrate for 500 milliseconds
+            v.vibrate(500);
+            i++;
+        }
+    }
+
     public void num_b (View view){
 
-        b =myRandom.nextInt(limite)+1;
+       // b =myRandom.nextInt(limite)+1;
+        int n=6;
+        b = (int) (Math.random() * n) + 1;
         textGenerateNumber_b.setText(String.valueOf(b));
         Button btn_b=(Button) findViewById(R.id.btn_b);
         btn_b.setVisibility(View.INVISIBLE);
