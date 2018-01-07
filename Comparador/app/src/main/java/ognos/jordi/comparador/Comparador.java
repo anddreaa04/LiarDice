@@ -1,6 +1,5 @@
 package ognos.jordi.comparador;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -73,19 +72,27 @@ public class Comparador extends AppCompatActivity {
         textGenerateNumber_a.setText(String.valueOf(a));
         Button btn_a=(Button) findViewById(R.id.btn_a);
         btn_a.setVisibility(View.INVISIBLE);
+
         contador_vibraciones(a);
 
     }
 
     private void contador_vibraciones(int n) {
-        int i=0;
-        while (i<n)
-        {
-             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            // Vibrate for 500 milliseconds
-            v.vibrate(500);
-            i++;
+        //instrucciones de la repetición
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+
+
+        while (n > 1) {
+
+            long[] pattern = {0, 500, 200};
+            v.vibrate(pattern, -1);
+            //v.vibrate(500);
+            n--;
         }
+
+
+
+
     }
 
     public void num_b (View view){
