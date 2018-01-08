@@ -77,23 +77,20 @@ public class Comparador extends AppCompatActivity {
 
     }
 
-    private void contador_vibraciones(int n) {
-        //instrucciones de la repetición
-        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+    private void contador_vibraciones(int n)
+    {
+       if(n>0) {
+           //instrucciones de la repetición
+           Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
-
-        while (n > 1) {
-
-            long[] pattern = {0, 500, 200};
-            v.vibrate(pattern, -1);
-            //v.vibrate(500);
-            n--;
-        }
-
-
-
-
+           long[] pattern = {0, 300, 100};
+           v.vibrate(pattern, -1);
+           //v.vibrate(500);
+           // n--;
+       }
     }
+
+
 
     public void num_b (View view){
 
