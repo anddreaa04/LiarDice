@@ -6,8 +6,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements ShakeToGenerateNumber.ShakeListener {
 
-
-    TextView textSensores;
     TextView txt_num;
     int a;
     private ShakeToGenerateNumber shakeToGenerateNumber;
@@ -17,8 +15,6 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        textSensores = (TextView) findViewById(R.id.txt_sensores);
         txt_num = (TextView) findViewById(R.id.txt_number);
         shakeToGenerateNumber = new ShakeToGenerateNumber();
         shakeToGenerateNumber.setListener(this);
@@ -30,6 +26,18 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
         int n=6;
         a = (int) (Math.random() * n) + 1;
         txt_num.setText(String.valueOf(a));
+    }
+
+   @Override
+    protected void onResume() {
+        super.onResume();
+        shakeToGenerateNumber.register();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        shakeToGenerateNumber.deregister();
     }
 }
 

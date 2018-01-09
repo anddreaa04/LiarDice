@@ -4,8 +4,6 @@ package ognos.jordi.accelerometrorandom;
  * Created by jordi on 08/01/2018.
  */
 
-
-
         import android.content.Context;
         import android.hardware.Sensor;
         import android.hardware.SensorEvent;
