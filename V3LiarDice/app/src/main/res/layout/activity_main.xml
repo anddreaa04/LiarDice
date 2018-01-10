@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.21"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -38,14 +38,12 @@
             android:id="@+id/txt_num_me"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textSize="50sp" />
 
         <TextView
             android:id="@+id/txt_num_you"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textSize="50sp" />
 
         <Button
@@ -54,6 +52,13 @@
             android:layout_height="wrap_content"
             android:onClick="compare"
             android:text="@string/compara" />
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="finish"
+            android:text="@string/fin" />
     </LinearLayout>
 
     <!--<ListView
@@ -67,9 +72,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.05"
         android:orientation="horizontal">
-
 
 
         <Button

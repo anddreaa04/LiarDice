@@ -20,20 +20,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView status,txt_num_me, txt_num_you,txt_winner;
-    private Button btnConnect,btnSend, btnCompara;
+    private Button btnConnect,btnSend, btnFinish,btnCompara;
     private ListView listView;
     private Dialog dialog;
-    //private TextInputLayout inputLayout;
-    //private ArrayAdapter<String> chatAdapter;
-    //private ArrayList<String> chatMessages;
     private BluetoothAdapter bluetoothAdapter;
-
     public static final int MESSAGE_STATE_CHANGE = 1;
     public static final int MESSAGE_READ = 2;
     public static final int MESSAGE_WRITE = 3;
@@ -47,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> discoveredDevicesAdapter;
 
     String txt_num;
-    Random myRandom;
-    int limite = 6;
-    int a, num_read, num_send;
+    int     a,
+            num_read,limite = 6,
+            num_send, aux=0,
+            tiradas_ronda=2,
+            num_rondas=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         findViewsByIds();
-        myRandom= new Random(limite);
+
 
         //check device support bluetooth or not
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -74,10 +71,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //set chat adapter
-        //chatMessages = new ArrayList<>();
-        //chatAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, chatMessages);
-        //listView.setAdapter(chatAdapter);
+
+        Button btn_finish=(Button) findViewById(R.id.btn_finish);
+        btn_finish.setVisibility (View.INVISIBLE);
+
+
     }
     //Handler, para controlar y saber el estado del dispositivo
     private Handler handler = new Handler(new Handler.Callback() {
@@ -90,20 +88,25 @@ public class MainActivity extends AppCompatActivity {
                         case ChatController.STATE_CONNECTED:
                             setStatus("Connected to: " + connectingDevice.getName());
                             btnConnect.setEnabled(false);
+                            btnSend.setVisibility(View.VISIBLE);
                             btnSend.setEnabled(true);
-                            btnCompara.setEnabled(true);
+
                             break;
                         case ChatController.STATE_CONNECTING:
                             setStatus("Connecting...");
                             btnConnect.setEnabled(false);
+                            btnSend.setVisibility(View.INVISIBLE);
                             btnSend.setEnabled(false);
+                            btnCompara.setVisibility(View.INVISIBLE);
                             btnCompara.setEnabled(false);
                             break;
                         case ChatController.STATE_LISTEN:
                         case ChatController.STATE_NONE:
                             setStatus("Not connected");
                             btnConnect.setEnabled(true);
+                            btnSend.setVisibility(View.INVISIBLE);
                             btnSend.setEnabled(false);
+                            btnCompara.setVisibility(View.INVISIBLE);
                             btnCompara.setEnabled(false);
 
                             break;
@@ -116,19 +119,14 @@ public class MainActivity extends AppCompatActivity {
                     num_send=Integer.parseInt(writeMessage);
                     txt_num_me.setText(writeMessage);
 
-                    //chatMessages.add("Me: " + writeMessage);
-                    //chatAdapter.notifyDataSetChanged();
                     break;
                 case MESSAGE_READ:
                     byte[] readBuf = (byte[]) msg.obj;
 
                     String readMessage = new String(readBuf, 0, msg.arg1);
                     num_read=Integer.parseInt(readMessage);
-
                     txt_num_you.setText(readMessage);
 
-                    //chatMessages.add(connectingDevice.getName() + ":  " + readMessage);
-                    //chatAdapter.notifyDataSetChanged();
                     break;
                 case MESSAGE_DEVICE_OBJECT:
                     connectingDevice = msg.getData().getParcelable(DEVICE_OBJECT);
@@ -235,19 +233,37 @@ public class MainActivity extends AppCompatActivity {
     private void findViewsByIds() {
         status = (TextView) findViewById(R.id.status);
         btnConnect = (Button) findViewById(R.id.btn_connect);
-        //listView = (ListView) findViewById(R.id.list);
-        //inputLayout = (TextInputLayout) findViewById(R.id.input_layout);
         btnSend = (Button) findViewById(R.id.btn_send);
         txt_num_me= (TextView) findViewById(R.id.txt_num_me);
         txt_num_you= (TextView) findViewById(R.id.txt_num_you);
         txt_winner = (TextView) findViewById(R.id.txt_winner);
         btnCompara= (Button) findViewById(R.id.btn_comparar);
         txt_winner.setText("Quien ganara?");
+        btnFinish = (Button) findViewById(R.id.btn_finish);
 
     }
     public void compare (View view){
 
         Comparador_tirada(num_send,num_read);
+        if (num_rondas<2){
+            btnSend.setVisibility(View.VISIBLE);
+            btnSend.setEnabled(true);
+            num_rondas++;
+            aux=0;
+            btnCompara.setVisibility(View.INVISIBLE);
+            btnCompara.setEnabled(false);
+
+        }
+
+        else{
+            //Toast.makeText(this, "Fin de la partida", Toast.LENGTH_LONG).show();
+            btnCompara.setVisibility(View.INVISIBLE);
+            btnCompara.setEnabled(false);
+            btnFinish.setVisibility(View.VISIBLE);
+            btnFinish.setEnabled(true);
+
+
+        }
 
     }
     //Metodo para comparar resultados
@@ -257,37 +273,51 @@ public class MainActivity extends AppCompatActivity {
         if(a<b){
             String gana_b= "Pierdes";
             txt_winner.setText(gana_b);
-            //Toast.makeText(this, "Gana el jugador B", Toast.LENGTH_SHORT).show();
+
         }
         else if (a>b){
             String gana_a= "Ganas";
             txt_winner.setText(gana_a);
-            //Toast.makeText(this, "Gana el jugador A", Toast.LENGTH_SHORT).show();
+
         }
         else{
             String empate= "Empate";
             txt_winner.setText(empate);
-            //Toast.makeText(this, "Empate", Toast.LENGTH_SHORT).show();
+
         }
     }
 
     public void enviar (View view)
     {
-        int n=6;
-        //a =myRandom.nextInt(limite)+1;
-        a = (int) (Math.random() * n) + 1;
-        txt_num = String .valueOf(a);
-        sendMessage(txt_num.toString());
-
-
-       /* if (inputLayout.getEditText().getText().toString().equals("")) {
-            Toast.makeText(MainActivity.this, "Please input some texts", Toast.LENGTH_SHORT).show();
-        } else {
-            //TODO: here
-            sendMessage(inputLayout.getEditText().getText().toString());
-            inputLayout.getEditText().setText("");
-        }*/
+        if (aux< tiradas_ronda){
+            //Pasa a string el resultado del dado, y el +1 provoca que no salga el 0
+            aux++;
+            a = (int) (Math.random() * limite) + 1;
+            txt_num = String .valueOf(a);
+            sendMessage(txt_num.toString());
+        }
+        else{
+            a = (int) (Math.random() * limite) + 1;
+            txt_num = String .valueOf(a);
+            sendMessage(txt_num.toString());
+            btnSend.setVisibility(View.INVISIBLE);
+            btnSend.setEnabled(false);
+            btnCompara.setVisibility(View.VISIBLE);
+            btnCompara.setEnabled(true);
+            Toast.makeText(this, "No tienes más tiradas en esta ronda", Toast.LENGTH_SHORT).show();
+            if(num_rondas==2){
+                btnCompara.setVisibility(View.VISIBLE);
+                btnCompara.setEnabled(true);
+            }
+        }
     }
+
+    public void finish (View v){
+
+        num_rondas=0;
+        finish();
+    }
+
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {

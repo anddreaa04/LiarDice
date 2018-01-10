@@ -85,7 +85,7 @@ public class Comparador extends AppCompatActivity {
 
            long[] pattern = {0, 300, 100};
            v.vibrate(pattern, -1);
-           //v.vibrate(500);
+           v.vibrate(500);
            // n--;
        }
     }
