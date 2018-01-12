@@ -29,21 +29,30 @@
             android:text="Connect" />
 
         <TextView
+            android:id="@+id/txt_round"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center" />
+
+        <TextView
             android:id="@+id/txt_winner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/txt_num_me"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/txt_num_you"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/txt_num_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:textSize="50sp" />
 
         <Button

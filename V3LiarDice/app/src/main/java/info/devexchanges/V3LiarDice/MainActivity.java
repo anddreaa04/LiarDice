@@ -24,7 +24,7 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView status,txt_num_me, txt_num_you,txt_winner;
+    private TextView status,txt_num_me, txt_num_you,txt_winner, txt_round;
     private Button btnConnect,btnSend, btnFinish,btnCompara;
     private ListView listView;
     private Dialog dialog;
@@ -46,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
             num_read,limite = 6,
             num_send, aux=0,
             tiradas_ronda=2,
-            num_rondas=0;
+            num_rondas=1,
+            rondas_ganadas_me=0,
+            rondas_ganadas_you=0;
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                             btnSend.setVisibility(View.VISIBLE);
                             btnSend.setEnabled(true);
 
+
                             break;
                         case ChatController.STATE_CONNECTING:
                             setStatus("Connecting...");
@@ -117,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String writeMessage = new String(writeBuf);
                     num_send=Integer.parseInt(writeMessage);
-                    txt_num_me.setText(writeMessage);
+                    //txt_num_me.setText(writeMessage);
 
                     break;
                 case MESSAGE_READ:
@@ -240,12 +244,12 @@ public class MainActivity extends AppCompatActivity {
         btnCompara= (Button) findViewById(R.id.btn_comparar);
         txt_winner.setText("Quien ganara?");
         btnFinish = (Button) findViewById(R.id.btn_finish);
-
+        txt_round = (TextView) findViewById(R.id.txt_round);
     }
     public void compare (View view){
 
         Comparador_tirada(num_send,num_read);
-        if (num_rondas<2){
+        if (num_rondas<3){
             btnSend.setVisibility(View.VISIBLE);
             btnSend.setEnabled(true);
             num_rondas++;
@@ -259,6 +263,18 @@ public class MainActivity extends AppCompatActivity {
             //Toast.makeText(this, "Fin de la partida", Toast.LENGTH_LONG).show();
             btnCompara.setVisibility(View.INVISIBLE);
             btnCompara.setEnabled(false);
+
+            if(rondas_ganadas_me>rondas_ganadas_you)
+            {
+                txt_winner.setText("");
+                txt_num_you.setText("Ganas la partida");
+            }
+            if (rondas_ganadas_you>rondas_ganadas_me)
+            {
+                txt_winner.setText("");
+                txt_num_you.setText("Pierdes la partida");
+            }
+
             btnFinish.setVisibility(View.VISIBLE);
             btnFinish.setEnabled(true);
 
@@ -273,11 +289,13 @@ public class MainActivity extends AppCompatActivity {
         if(a<b){
             String gana_b= "Pierdes";
             txt_winner.setText(gana_b);
+            rondas_ganadas_you++;
 
         }
         else if (a>b){
             String gana_a= "Ganas";
             txt_winner.setText(gana_a);
+            rondas_ganadas_me++;
 
         }
         else{
@@ -289,6 +307,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void enviar (View view)
     {
+        txt_round.setText("Round "+ num_rondas);
         if (aux< tiradas_ronda){
             //Pasa a string el resultado del dado, y el +1 provoca que no salga el 0
             aux++;
