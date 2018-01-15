@@ -17,10 +17,10 @@ public class ShakeToGenerateNumber implements SensorEventListener {
     private Sensor s;
 
 
-    private static final int MOV_COUNTS = 2;
+    private static final int MOV_COUNTS = 1;
     private static final int MOV_THRESHOLD = 4;
     private static final float ALPHA = 0.8F;
-    private static final int SHAKE_WINDOW_TIME_INTERVAL = 500; // milliseconds
+    private static final int SHAKE_WINDOW_TIME_INTERVAL = 1500; // milliseconds
 
     // Gravity force on x,y,z axis
     private float gravity[] = new float[3];
@@ -49,18 +49,21 @@ public class ShakeToGenerateNumber implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         float maxAcc = calcMaxAcceleration(sensorEvent);
-        Log.d("SwA", "Max Acc ["+maxAcc+"]");
+        Log.d("Andrea", "Max Acc ["+maxAcc+"]");
         if (maxAcc >= MOV_THRESHOLD) {
             if (counter == 0) {
                 counter++;
                 firstMovTime = System.currentTimeMillis();
-                Log.d("SwA", "First mov..");
+                Log.d("Andrea", "First mov..");
             } else {
                 long now = System.currentTimeMillis();
-                if ((now - firstMovTime) < SHAKE_WINDOW_TIME_INTERVAL)
-                    counter++;
-                else {
+                if ((now - firstMovTime) > SHAKE_WINDOW_TIME_INTERVAL)
+                {
                     resetAllData();
+                    counter++;
+                }
+
+                else {
                     counter++;
                     return;
                 }

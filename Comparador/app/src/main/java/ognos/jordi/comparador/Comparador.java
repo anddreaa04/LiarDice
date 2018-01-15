@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Comparador extends AppCompatActivity {
-    //Variable aleatoria creada
-    Random myRandom;
+
 
     //Límite de la variable
     int limite=6;
@@ -23,6 +25,10 @@ public class Comparador extends AppCompatActivity {
     //Valores del resultado de la tirada
     int a;
     int b;
+    Timer timer = new Timer();
+
+    Vibrator v;
+
 
 
 
@@ -31,13 +37,14 @@ public class Comparador extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comparador);
-        myRandom= new Random(limite);
 
         textGenerateNumber_a = (TextView) findViewById(R.id.txt_a);
         textGenerateNumber_b = (TextView) findViewById(R.id.txt_b);
         text_ganador = (TextView) findViewById(R.id.txt_ganador);
         Button btn_compara=(Button) findViewById(R.id.btn_comparar);
         btn_compara.setVisibility(View.VISIBLE);
+        v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+
 
 
 
@@ -66,37 +73,71 @@ public class Comparador extends AppCompatActivity {
 
     public void num_a (View view){
 
-        //a =myRandom.nextInt(limite)+1;
-        int n=6;
-        a = (int) (Math.random() * n) + 1;
+        a = (int) (Math.random() * limite) + 1;
         textGenerateNumber_a.setText(String.valueOf(a));
         Button btn_a=(Button) findViewById(R.id.btn_a);
         btn_a.setVisibility(View.INVISIBLE);
 
-        contador_vibraciones(a);
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                contador_vibraciones(a);
+            }
+        },0,2000);
+
 
     }
 
     private void contador_vibraciones(int n)
     {
-       if(n>0) {
-           //instrucciones de la repetición
-           Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        //instrucciones de la repetición
 
-           long[] pattern = {0, 300, 100};
+        //int Patron [] = new int[] {0, 150, 50, 150, 50, 150, 50, 150, 50, 150, 50, 150, 50};
+        //long [] pattern ={[Patron][(6-n)]}
+
+       if(n==1) {
+           long [] pattern ={0,150,150};
            v.vibrate(pattern, -1);
-           v.vibrate(500);
-           // n--;
+
        }
+        if(n==2) {
+
+            long[] pattern = {0, 150, 150, 150,150};
+            v.vibrate(pattern, -1);
+
+        }
+        if(n==3) {
+
+            long[] pattern = {0, 150, 150,150, 150, 150,150 };
+            v.vibrate(pattern, -1);
+
+        }
+        if(n==4) {
+
+            long[] pattern = {0, 150, 150, 150, 150, 150, 150, 150, 150};
+            v.vibrate(pattern, -1);
+
+        }
+        if(n==5) {
+
+            long[] pattern = {0, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150};
+            v.vibrate(pattern, -1);
+
+        }
+        if(n==6) {
+
+            long[] pattern = {0, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150};
+            v.vibrate(pattern, -1);
+
+        }
     }
 
 
 
     public void num_b (View view){
 
-       // b =myRandom.nextInt(limite)+1;
-        int n=6;
-        b = (int) (Math.random() * n) + 1;
+        b = (int) (Math.random() * limite) + 1;
         textGenerateNumber_b.setText(String.valueOf(b));
         Button btn_b=(Button) findViewById(R.id.btn_b);
         btn_b.setVisibility(View.INVISIBLE);
@@ -104,6 +145,7 @@ public class Comparador extends AppCompatActivity {
     }
 
     public void compare (View view){
+
 
         Comparador_tirada(a,b);
         Button btn_a=(Button) findViewById(R.id.btn_a);
