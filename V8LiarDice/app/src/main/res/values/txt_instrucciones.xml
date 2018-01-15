@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="list_instructions">
+		<item>
+			 LiarDice es un juego de azar. El objetivo es sacar un número mayor que tu oponente.
+		</item>
+		<item>
+			1.	Para tirar el dado, mueve el dispositivo.
+		</item>
+		<item>
+			2.	Una vez hayas tirado, se enviará el resultado al dispositivo del contrario,
+				en forma de vibración. Tu dispositivo recibirá el resultado de tu oponente, de la misma manera.
+
+		</item>
+		<item>
+			3.	Cuenta las vibraciones, en silencio. Éstas están separadas por un pequeño lapso de tiempo,
+				que te permite ir contando el mismo número las veces que necesites.
+		</item>
+		<item>
+			4.	Intenta convencer a tu rival para que vuelva a tirar (o no) si crees que su número puede ser mayor que el tuyo.
+				Disponéis ambos de 3 tiradas por ronda.
+		</item>
+		<item>
+
+			5.	Una vez decidas que no vas a tirar más, pulsa el botón de “siguiente ronda”.
+				No podrás pasar de ronda hasta que ambos le hayáis dado al botón. El juego tiene 3 rondas.
+		</item>
+		<item>
+			6.	Gana el jugador que gane más rondas.
+		</item>
+
+	</string-array>
+</resources>

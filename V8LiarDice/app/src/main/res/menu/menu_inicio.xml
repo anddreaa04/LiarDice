@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.upc.eseiaat.pma.v8liardice.InicioActivity">
+    <item
+        android:id="@+id/item_idioma"
+        android:title="@string/idioma" />
+    <item
+        android:id="@+id/item_instrucciones"
+        android:title="@string/instrucciones" />
+</menu>

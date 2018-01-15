@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">V8LiarDice</string>
+    <string name="menu">Menu</string>
+    <string name="instrucciones">Instrucciones</string>
+    <string name="idioma">Idioma</string>
+
+    <!-- Strings del bluetooth -->
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">No devices found</string>
+    <string name="compara">Compara</string>
+    <string name="fin">Volver al Inicio</string>
+    <string name="tirar">Tirar</string>
+    <string name="acaba_ronda">Me Planto</string>
+
+</resources>
