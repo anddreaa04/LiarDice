@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name" translatable="false">LiarDice</string>
+    <string name="menu">Menu</string>
+    <string name="instrucciones">Instructions</string>
+    <string name="idioma">Language</string>
+
+    <!-- Strings del bluetooth -->
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">No devices found</string>
+    <string name="compara">Compare</string>
+    <string name="fin">Back to the begining</string>
+    <string name="tirar">Throw dice</string>
+    <string name="acaba_ronda">Stop throwing</string>
+    <string name="lose">Lose</string>
+    <string name="win">Win</string>
+    <string name="tie">Tie</string>
+    <string name="winthegame">You win the game</string>
+    <string name="losethegame">You lose the game</string>
+    <string name="round">Round</string>
+    <string name="question"> Who\'s gonna win?</string>
+    <string name="question_exit">Do you wanna exit?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="bt_not_available">Bluetooth is not available</string>
+    <string name="connected_to">Connected to: </string>
+    <string name="connecting">Connecting... </string>
+    <string name="not_connected">Not connected</string>
+    <string name="bt_devices">Bluetooth devices</string>
+    <string name="msg_bt">Please, switch on your Bluetooth to play</string>
+
+    <string name="unable_connect">Unable to connect device</string>
+    <string name="connection_lost">Connection was lost</string>
+
+    <string name="change_language">Change Language</string>
+
+    <string name="str_en" translatable="false">English</string>
+    <string name="str_ca" translatable="false">Català</string>
+    <string name="str_es" translatable="false">Español</string>
+    <string name="connect">Connect</string>
+    <string name="close">Understood</string>
+    <string name="shake_phone">Shake to throw dices!</string>
+
+    <string-array name="languages" >
+        <item>@string/str_en</item>
+        <item>@string/str_es</item>
+        <item>@string/str_ca</item>
+    </string-array>
+
+    <string-array name="list_instructions_2">
+		<item>
+			 LiarDice is a game of chance. The goal is to obtain a larger number than your opponent.
+		</item>
+        <item>
+			1.	To roll the dice, shake the device.
+		</item>
+        <item>
+			2.	Once you have thrown, the result will be sent to the opponent\'s device, in the form
+            of vibration. Your device will receive the result of your opponent, in the same way.
+
+		</item>
+        <item>
+			3.	Count the vibrations, silently. These are separated by a small amount of time, which
+            allows you to count the same number as many times as you need.
+		</item>
+        <item>
+			4.	Try to convince your opponent to throw again (or not) if you think their number may
+            be bigger than yours.
+		</item>
+        <item>
+
+			5.	Once you decide that you are not going to throw more, press the “Stop throwing” button.
+            You will 	not be able to pass the round until both of you have hit the button.
+            The game has 3 rounds.
+
+		</item>
+        <item>
+			6.	The winner is the player who wins the most rounds.
+		</item>
+
+    </string-array>
+
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tirar">Llençar</string>
+    <string name="acaba_ronda">Em Planto</string>
+    <string name="compara">Compara</string>
+    <string name="instrucciones">Instruccions</string>
+    <string name="idioma">Idioma</string>
+    <string name="fin">Torna a l\'inici</string>
+    <string name="menu">Menú</string>
+    <string name="none_found">No hi ha  dispositius disponibles</string>
+    <string name="none_paired">No hi ha dispositius eparellats</string>
+    <string name="change_language">Escull idioma</string>
+    <string name="bt_devices">Dispositius Bluetooth</string>
+    <string name="bt_not_available">Bluetooth no disponible</string>
+    <string name="connected_to">"Connectat a: "</string>
+    <string name="connecting">"Connectant... "</string>
+    <string name="lose">Perds</string>
+    <string name="losethegame">Perds el joc</string>
+    <string name="not_connected">No connectat</string>
+    <string name="question">Qui guanyarà?</string>
+    <string name="round">Ronda</string>
+    <string name="tie">Empat</string>
+    <string name="win">Guanyes</string>
+    <string name="winthegame">Guanyes el joc</string>
+    <string name="connection_lost">La connexió s\'ha perdut</string>
+    <string name="unable_connect">Impossible connectar</string>
+    <string name="connect">Connectar</string>
+    <string name="msg_bt">Si us plau, activi el seu Bluetooth per a jugar</string>
+    <string name="close">Entès</string>
+    <string name="cancel">Cancel·lar</string>
+    <string name="question_exit">Segur que vols sortir?</string>
+    <string name="yes">Si</string>
+    <string name="shake_phone">Sacseja per a llençar els daus!</string>
+
+    <string-array name="list_instructions_2">
+		<item>
+			 LiarDice és un joc d’atzar. L’objectiu és treure un número més gran que el del teu contrincant.
+		</item>
+        <item>
+			1.	Per a tirar el dau, mou el dispositiu.
+		</item>
+        <item>
+			2.	Un cop hagis tirat, el teu resultat s\’enviarà al dispositiu del contrari,
+            en forma de vibracions. El teu 	dispositiu 	rebrà, de la mateixa manera, el seu resultat.
+
+		</item>
+        <item>
+			3.	Compta les vibracions, en silenci. Aquestes es troben separades per un petit espai
+            de temps, que permet anar comptant el número les vegades que necessitis.
+		</item>
+        <item>
+			4.	Intenta convèncer al teu rival per a que torni a tirar (o no) si creus que el seu
+            número pot ser més gros que el teu.
+		</item>
+        <item>
+			5.	Un cop decideixis que no tiraràs més, prem el botó de “em planto”.
+            No podràs passar de ronda fins que 	ambdós hagueu polsat el botó. El joc té 3 rondes.
+		</item>
+        <item>
+			6.	Guanya el jugador que guanyi més rondes.
+		</item>
+
+    </string-array>
+
+</resources>
