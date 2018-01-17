@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="tirar">Llençar</string>
+    <string name="tirar">Llançar</string>
     <string name="acaba_ronda">Em Planto</string>
     <string name="compara">Compara</string>
     <string name="instrucciones">Instruccions</string>
@@ -61,5 +61,8 @@
 		</item>
 
     </string-array>
+    <string name="aviso_tirada">Has llançat el dau</string>
+    <string name="discovered_dev">Dispositius descoberts</string>
+    <string name="paired_dev">Dispositius emparellats</string>
 
 </resources>

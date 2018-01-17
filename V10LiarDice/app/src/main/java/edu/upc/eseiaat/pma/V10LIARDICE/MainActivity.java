@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
 
     String txt_num;
     int     a, b, c, d=0, e=0, f=0,g, numDisp1, numDisp2,
-            num_read,limite = 6,time_limit=30000,
+            num_read,limite = 6,time_limit=60000,
             num_send,
             num_rondas=1,
             rondas_ganadas_me=0,
@@ -68,9 +68,8 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         findViewsByIds();
-        getResources().updateConfiguration(config,null);
 
-        //check device support bluetooth or not
+       //check device support bluetooth or not
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             Toast.makeText(this, getResources().getString(R.string.bt_not_available), Toast.LENGTH_SHORT).show();
@@ -147,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
 
                     if(num_read<(limite+1)){
                         btnPlantarse.setEnabled(true);
-                        //txt_num_you.setText(String.valueOf(num_read));
+                        txt_num_you.setText(""/*String.valueOf(num_read)*/);
                         numDisp2=num_read;
                         if (f==0){
                             cuenta_atras = new CountDownTimer(time_limit, 3000) {
@@ -372,6 +371,7 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
             d++;
         }
         else {
+            Toast.makeText(this, R.string.aviso_tirada, Toast.LENGTH_SHORT).show();
             txt_round.setText(getResources().getString(R.string.round) + num_rondas);
             //Pasa a string el resultado del dado, y el +1 provoca que no salga el 0
             a = (int) (Math.random() * limite) + 1;
@@ -438,7 +438,10 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
                 txt_num_you.setText(getResources().getString(R.string.losethegame));
 
             }
-
+            if(rondas_ganadas_me==rondas_ganadas_you) {
+                txt_winner.setText("");
+                txt_num_you.setText(getResources().getString(R.string.tie));
+            }
         }
 
     }
@@ -519,7 +522,7 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
     @Override
     public void finish() {
         super.finish();
-
+        v.cancel();
         if (chatController != null)
             chatController.stop();
     }
@@ -527,9 +530,7 @@ public class MainActivity extends AppCompatActivity implements ShakeToGenerateNu
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        bluetoothAdapter.disable();
-
+        v.cancel();
         if (chatController != null)
             chatController.stop();
     }

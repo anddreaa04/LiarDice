@@ -62,4 +62,7 @@
 		</item>
 
     </string-array>
+    <string name="aviso_tirada">Has lanzado el dado</string>
+    <string name="discovered_dev">Dispositivos descubiertos</string>
+    <string name="paired_dev">Dispositivos emparejados</string>
 </resources>

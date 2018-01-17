@@ -10,6 +10,7 @@
     <string name="compara">Compare</string>
     <string name="fin">Back to the begining</string>
     <string name="tirar">Throw dice</string>
+    <string name="aviso_tirada">The dice have been rolled</string>
     <string name="acaba_ronda">Stop throwing</string>
     <string name="lose">Lose</string>
     <string name="win">Win</string>
@@ -40,6 +41,8 @@
     <string name="connect">Connect</string>
     <string name="close">Understood</string>
     <string name="shake_phone">Shake to throw dices!</string>
+    <string name="paired_dev">Paired Devices</string>
+    <string name="discovered_dev">Discovered Devices</string>
 
     <string-array name="languages" >
         <item>@string/str_en</item>

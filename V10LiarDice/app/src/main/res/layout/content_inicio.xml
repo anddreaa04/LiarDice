@@ -11,17 +11,18 @@
 
     <TextView
         android:id="@+id/txt_title"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="187dp"
+        android:layout_above="@+id/floatingActionButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="138dp"
+        android:fontFamily="casual"
         android:text="Liar Dice"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@color/colorAccent"
+        android:textSize="52sp"
+        android:textStyle="bold" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
